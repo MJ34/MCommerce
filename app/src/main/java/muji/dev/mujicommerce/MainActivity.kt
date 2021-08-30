@@ -8,9 +8,12 @@ import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import muji.dev.mujicommerce.activity.LoginActivity
+import muji.dev.mujicommerce.activity.MasukActivity
 import muji.dev.mujicommerce.fragment.AkunFragment
 import muji.dev.mujicommerce.fragment.HomeFragment
 import muji.dev.mujicommerce.fragment.KeranjangFragment
+import muji.dev.mujicommerce.helper.SharedPref
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,9 +27,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var menuItem: MenuItem
     private lateinit var bottomNavigationView: BottomNavigationView
 
+    private var statusLogin = false
+
+    private lateinit var s: SharedPref
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        s = SharedPref(this)
 
         setUpBottomNav()
     }
@@ -51,7 +60,11 @@ class MainActivity : AppCompatActivity() {
                     callFargment(1, fragmentKeranjang)
                 }
                 R.id.navigation_akun -> {
-                    callFargment(2, fragmentAkun)
+                    if (s.getStatusLogin()) {
+                        callFargment(2, fragmentAkun)
+                    } else {
+                        startActivity(Intent(this, MasukActivity::class.java))
+                    }
                 }
             }
 

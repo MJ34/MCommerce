@@ -106,7 +106,7 @@
                     android:text="Produk Terlaris"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_produkTerlasir"
+                    android:id="@+id/rv_produkTerlaris"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 

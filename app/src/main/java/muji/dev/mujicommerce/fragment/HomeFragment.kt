@@ -17,7 +17,7 @@ class HomeFragment : Fragment() {
 
     lateinit var vpSlider: ViewPager
     lateinit var rvProduk: RecyclerView
-    lateinit var rvProdukTerlasir: RecyclerView
+    lateinit var rvProdukTerlaris: RecyclerView
     lateinit var rvElektronik: RecyclerView
 
     override fun onCreateView(
@@ -57,7 +57,11 @@ class HomeFragment : Fragment() {
         rvProduk.adapter = AdapterProduk(arrProduk)
         rvProduk.layoutManager = layoutManager
 
+        rvProdukTerlaris.adapter = AdapterProduk(arrProdukTerlaris)
+        rvProdukTerlaris.layoutManager = layoutManager2
 
+        rvElektronik.adapter = AdapterProduk(arrElektronik)
+        rvElektronik.layoutManager = layoutManager3
 
         /*rvProduk.adapter = AdapterProduk(requireActivity(), listProduk)
         rvProduk.layoutManager = layoutManager
@@ -93,7 +97,7 @@ class HomeFragment : Fragment() {
     fun init(view: View) {
         vpSlider = view.findViewById(R.id.vp_slider)
         rvProduk = view.findViewById(R.id.rv_produk)
-        rvProdukTerlasir = view.findViewById(R.id.rv_produkTerlasir)
+        rvProdukTerlaris = view.findViewById(R.id.rv_produkTerlaris)
         rvElektronik = view.findViewById(R.id.rv_elektronik)
     }
 
